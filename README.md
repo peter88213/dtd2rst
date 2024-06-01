@@ -1,6 +1,6 @@
 # dtd2rst
 
-Generate a framework of reStructured Text pages for a DTD documentation.
+Generate a framework of reStructuredText pages for a DTD documentation.
 
 ![Screenshot](docs/Screenshots/screen01.png)
 
@@ -17,6 +17,7 @@ Generate a framework of reStructured Text pages for a DTD documentation.
       - A list of contained elements (page links).
       
   - A second-level heading for each attribute.
+  - Information about each attribute (to be completed manually).
   
 - Creates an index page with all tags.
 
