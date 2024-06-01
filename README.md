@@ -2,6 +2,8 @@
 
 Generate a framework of rst pages for a DTD documentation.
 
+![Screenshot](docs/Screenshots/screen01.png)
+
 ## Features
 
 - Creates one page per XML tag, named after the tag.
