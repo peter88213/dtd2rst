@@ -1,6 +1,6 @@
 # dtd2rst
 
-Generate a framework of rst pages for a DTD documentation.
+Generate a framework of reStructured Text pages for a DTD documentation.
 
 ![Screenshot](docs/Screenshots/screen01.png)
 
@@ -20,16 +20,21 @@ Generate a framework of rst pages for a DTD documentation.
   
 - Creates an index page with all tags.
 
+## Requirements
+
+- Python v3.6+
+- The lxml package
+
+## Download
+
+Save the file [dtd2rst.py](https://raw.githubusercontent.com/peter88213/dtd2rst/main/src/dtd2rst.py).
+
+
 ## Usage
 ```
     dtd2rst.py <DTD path>
 
 ```
-
-## Requirements
-
-- Python v3.6+
-- The lxml package
 
 ------------
 
