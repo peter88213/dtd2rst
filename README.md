@@ -24,7 +24,7 @@ Generate a framework of reStructuredText pages for a DTD documentation.
 ## Requirements
 
 - Python v3.6+
-- The lxml package
+- The [lxml package](https://pypi.org/project/lxml/)
 
 ## Download
 

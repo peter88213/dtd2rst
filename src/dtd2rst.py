@@ -25,9 +25,7 @@ Requirements
 ------------
 
 - Python v3.6+
-- The lxml package
-
-https://lxml.de/validation.html#id1
+- The lxml package (https://pypi.org/project/lxml/)
 
 Copyright (c) 2024 Peter Triesberger
 For further information see https://github.com/peter88213/dtd2rst
@@ -39,6 +37,7 @@ Changelog:
 v1.0.0 - Initial release.
 v1.1.0 - Link to the attribute chapters within the pages. 
 v1.1.1 - Bugfix. 
+v1.1.2 - Refactor. 
 """
 import os
 from shutil import rmtree
@@ -52,7 +51,7 @@ TITLE_UNDERLINER = '='
 INDEX_HEADING = 'The $RootTag file format'
 TAG_HEADING = 'The <$Tag> tag'
 ATTRIBUTE_HEADING = 'The $Attribute attribute'
-ATTRIBUTE_LINK = '#the-$Attribute-attribute'
+ATTRIBUTE_LINK = '#the-$AttributeLower-attribute'
 
 TOCTREE = """
 .. toctree::
@@ -98,7 +97,10 @@ def get_heading(heading, c):
 
 
 def read_dtd(dtdPath, dtdJson):
-    """Populate a JSON data structure with the relevant DTD information."""
+    """Populate a JSON data structure with the relevant DTD information.
+    
+    See also: https://lxml.de/validation.html
+    """
 
     def get_content(cnt):
         if cnt is None:
@@ -175,7 +177,7 @@ def write_tag_page(rstPath, tag, tagJson):
     # Collect attribute names.
     attributeLines = []
     for attributeName in tagJson['attributes']:
-        mapping['Attribute'] = attributeName.lower()
+        mapping['AttributeLower'] = attributeName.lower()
         attributeLink = f'`{attributeName} <{Template(ATTRIBUTE_LINK).substitute(mapping)}>`__'
         attributeLines.append(attributeLink)
     if attributeLines:
