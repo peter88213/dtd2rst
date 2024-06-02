@@ -30,7 +30,7 @@ Requirements
 https://lxml.de/validation.html#id1
 
 Copyright (c) 2024 Peter Triesberger
-For further information see https://github.com/peter88213/
+For further information see https://github.com/peter88213/dtd2rst
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
 
 
