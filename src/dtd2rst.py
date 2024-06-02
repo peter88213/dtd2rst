@@ -38,6 +38,7 @@ Changelog:
 
 v1.0.0 - Initial release.
 v1.1.0 - Link to the attribute chapters within the pages. 
+v1.1.1 - Bugfix. 
 """
 import os
 from shutil import rmtree
@@ -174,7 +175,7 @@ def write_tag_page(rstPath, tag, tagJson):
     # Collect attribute names.
     attributeLines = []
     for attributeName in tagJson['attributes']:
-        mapping = {'Attribute':attributeName.lower()}
+        mapping['Attribute'] = attributeName.lower()
         attributeLink = f'`{attributeName} <{Template(ATTRIBUTE_LINK).substitute(mapping)}>`__'
         attributeLines.append(attributeLink)
     if attributeLines:
