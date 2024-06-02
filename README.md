@@ -13,10 +13,10 @@ Generate a framework of reStructuredText pages for a DTD documentation.
   
   - A box containing the basic information:
       - Purpose (to be filled in manually).
-      - A list of attributes.
+      - A list of attributes (chapter links).
       - A list of contained elements (page links).
       
-  - A second-level heading for each attribute.
+  - A second-level chapter for each attribute.
   - Information about each attribute (to be completed manually).
   
 - Creates an index page with all tags.
