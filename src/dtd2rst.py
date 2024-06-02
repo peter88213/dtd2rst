@@ -32,6 +32,12 @@ https://lxml.de/validation.html#id1
 Copyright (c) 2024 Peter Triesberger
 For further information see https://github.com/peter88213/
 Published under the MIT License (https://opensource.org/licenses/mit-license.php)
+
+
+Changelog:
+
+v1.0.0 - Initial release.
+v1.1.0 - Link to the attribute chapters within the pages. 
 """
 import os
 from shutil import rmtree
@@ -45,6 +51,7 @@ TITLE_UNDERLINER = '='
 INDEX_HEADING = 'The $RootTag file format'
 TAG_HEADING = 'The <$Tag> tag'
 ATTRIBUTE_HEADING = 'The $Attribute attribute'
+ATTRIBUTE_LINK = '#the-$Attribute-attribute'
 
 TOCTREE = """
 .. toctree::
@@ -167,7 +174,9 @@ def write_tag_page(rstPath, tag, tagJson):
     # Collect attribute names.
     attributeLines = []
     for attributeName in tagJson['attributes']:
-        attributeLines.append(attributeName)
+        mapping = {'Attribute':attributeName.lower()}
+        attributeLink = f'`{attributeName} <{Template(ATTRIBUTE_LINK).substitute(mapping)}>`__'
+        attributeLines.append(attributeLink)
     if attributeLines:
         attributeNames = '\n      - '.join(attributeLines)
         mapping['Attributes'] = f'\n   Attributes\n      - {attributeNames}'
@@ -193,17 +202,17 @@ def write_tag_page(rstPath, tag, tagJson):
         attributeHeading = Template(ATTRIBUTE_HEADING).substitute({'Attribute':attributeName})
         tagPageLines.append(f'{get_heading(attributeHeading, "-")}\n')
 
-        type = tagJson['attributes'][attributeName][0]
-        default = tagJson['attributes'][attributeName][1]
-        values = tagJson['attributes'][attributeName][2]
+        attrType = tagJson['attributes'][attributeName][0]
+        attrDefault = tagJson['attributes'][attributeName][1]
+        attrValues = tagJson['attributes'][attributeName][2]
         defaultValue = tagJson['attributes'][attributeName][3]
 
-        if type == 'enumeration':
-            for literal in values:
+        if attrType == 'enumeration':
+            for literal in attrValues:
                 tagPageLines.append(f'- {literal}: ')
             tagPageLines.append(f'\nDefault value: {defaultValue}\n')
         else:
-            tagPageLines.append(f'Default: {default}\n')
+            tagPageLines.append(f'Default: {attrDefault}\n')
 
     #--- Write the page to a rst file.
 
