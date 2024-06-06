@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """Generate a framework of rst pages for a DTD documentation.
 
 Features
